@@ -1,0 +1,18 @@
+{
+  "_comment": "Ten PG&E-area transmission substations at the ends of the day-ahead constraints CAISO's Department of Market Monitoring lists as most congested in 2025 (2025 Annual Report on Market Issues and Performance, Table 5.3, 'Impact of congestion on day-ahead prices - top 25 primary congestion constraints'). congestion_share is the share of 2025 hours the named constraint bound in the day-ahead market, as printed in that table; where a substation ends several listed constraints, the most frequent is used. DMM reports the three most impactful of these binding during solar hours, hour-ending 9 through 16-17; the others are assumed to follow the same pattern. Coordinates are approximate (to within a few km) and come from public maps, not CAISO data -- good enough for a solar resource, not for siting.",
+  "source": "https://www.caiso.com/documents/2025-annual-report-on-market-issues-and-performance.pdf",
+  "binding_hours_ending": [9, 17],
+  "_comment_pnode": "pnode is the CAISO pricing node whose day-ahead LMP stands in for the site's price: the substation's lower-voltage load node where OASIS has one (Los Banos only has its 500 kV bus). Chosen by name match against OASIS's node list, not from a published mapping.",
+  "sites": [
+    {"id": "moss_landing", "name": "Moss Landing", "lat": 36.805, "lon": -121.782, "constraint": "30750_MOSSLD_230_30797_LASAGUIL_230_BR_1_1", "congestion_share": 0.238, "pnode": "MOSSLD_1_N001"},
+    {"id": "los_banos", "name": "Los Banos", "lat": 37.05, "lon": -120.93, "constraint": "30765_LOSBANOS_230_30790_PANOCHE_230_BR_2_1", "congestion_share": 0.171, "pnode": "LOSBANOS_5_B1"},
+    {"id": "panoche", "name": "Panoche", "lat": 36.655, "lon": -120.579, "constraint": "30765_LOSBANOS_230_30790_PANOCHE_230_BR_2_1", "congestion_share": 0.171, "pnode": "PANOCHE_1_N001"},
+    {"id": "gates", "name": "Gates", "lat": 36.15, "lon": -120.095, "constraint": "30790_PANOCHE_230_30900_GATES_230_BR_2_1", "congestion_share": 0.122, "pnode": "GATES_6_B1"},
+    {"id": "midway", "name": "Midway", "lat": 35.41, "lon": -119.45, "constraint": "30055_GATES1_500_30060_MIDWAY_500_BR_1_1", "congestion_share": 0.053, "pnode": "MIDWAY_1_N047"},
+    {"id": "tesla", "name": "Tesla", "lat": 37.7, "lon": -121.56, "constraint": "30040_TESLA_500_30050_LOSBANOS_500_BR_1_1", "congestion_share": 0.042, "pnode": "TESLA_1_N027"},
+    {"id": "san_jose_a", "name": "San Jose Sta. A", "lat": 37.35, "lon": -121.9, "constraint": "35618_SNJSEA_115_35620_ELPATIO_115_BR_1_1", "congestion_share": 0.039, "pnode": "SNJSEA_1_N001"},
+    {"id": "el_patio", "name": "El Patio", "lat": 37.305, "lon": -121.865, "constraint": "35618_SNJSEA_115_35620_ELPATIO_115_BR_1_1", "congestion_share": 0.039, "pnode": "ELPATIO_1_N001"},
+    {"id": "mountain_view", "name": "Mountain View (Whisman)", "lat": 37.4, "lon": -122.06, "constraint": "35352_WHISMAN_115_35356_MNTAVSA_115_BR_1_1", "congestion_share": 0.026, "pnode": "WHISMAN_1_N001"},
+    {"id": "metcalf", "name": "Metcalf", "lat": 37.223, "lon": -121.742, "constraint": "35642_METCALF_115_30735_METCALF_230_XF_2", "congestion_share": 0.012, "pnode": "METCALF_1_N018"}
+  ]
+}

@@ -1,0 +1,55 @@
+# Site and sweep metadata for flex_connect_solar.
+# `tools/site/build.py` reads this to build the landing page and to validate the
+# example; `tools/sweep.py` reads the [sweep] block. See CONTRIBUTING.md.
+
+schema_version = 1
+name = "flex_connect_solar"
+title = "Flex Connect + solar"
+order = 30
+
+blurb = """
+A 5 MW process on a PG&E Flex Connect service, whose import cap drops in the hours the local \
+grid is congested. At ten congested PG&E sites, what is each MWh of load shifting worth?"""
+
+tags = ["MILP", "unit commitment", "flexible interconnection", "7 d @ 15 min", "HiGHS"]
+
+[notebooks]
+solver = "notebook.py"
+sweep = "sweep.py"
+wasm = "explore.py"
+
+[wasm]
+mode = "run"
+show_code = false
+execute = true
+
+[solve]
+solver = "highs"
+runtime_minutes = 5
+ci_runnable = true
+
+[sweep]
+# Two dimensions flattened into one list of points: every site crossed with every
+# utilization target. `utilization_target` is the axis the value curves are drawn
+# against; `site` is in every summary row too, and the page filters on it.
+axis = "utilization_target"
+axis_label = "Utilization target (weekly average, fraction of rated)"
+columns = [
+    "process_kw",
+    "process_status",
+    "solar_kw",
+    "grid_import_kw",
+    "import_limit_kw",
+    "curtailed",
+    "baseline_kw",
+    "energy_price",
+]
+
+# A week at 15 minutes is 672 rows a site -- small enough to draw whole.
+[[sweep.views]]
+name = "series"
+kind = "full"
+
+[[sweep.views]]
+name = "profile"
+kind = "diurnal"

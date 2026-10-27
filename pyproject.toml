@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "flex-pse-examples"
 version = "0.1.0"
-description = "Runnable flex-pse example flowsheets: desalination scheduling and pump scheduling"
+description = "Runnable flex-pse example flowsheets: desalination scheduling, pump scheduling, and Flex Connect + solar"
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Flex-PSE"}]
@@ -21,6 +21,9 @@ dependencies = [
 
 [project.optional-dependencies]
 notebooks = ["marimo==0.24.0"]
+# Only for rebuilding flex_connect_solar's solar forecast cache (sites.py) or a
+# live location in its notebook. The committed cache keeps everything else offline.
+location = ["hefty>=0.3.2", "dynamical_catalog", "cartopy"]
 
 [project.urls]
 Homepage = "https://flex-pse.github.io/flex-pse-examples/"
@@ -32,6 +35,7 @@ dev = ["pytest", "jinja2>=3.1", "ruff"]
 [tool.setuptools.package-dir]
 "flex_pse_examples.examples" = "examples"
 "flex_pse_examples.examples.desalination_scheduling" = "examples/desalination_scheduling"
+"flex_pse_examples.examples.flex_connect_solar" = "examples/flex_connect_solar"
 "flex_pse_examples.examples.pump_scheduling" = "examples/pump_scheduling"
 
 [tool.setuptools]
@@ -40,6 +44,7 @@ packages = [
   "flex_pse_examples.diagrams",
   "flex_pse_examples.examples",
   "flex_pse_examples.examples.desalination_scheduling",
+  "flex_pse_examples.examples.flex_connect_solar",
   "flex_pse_examples.examples.pump_scheduling",
 ]
 
@@ -48,6 +53,10 @@ packages = [
 "flex_pse_examples.examples.desalination_scheduling" = [
   "config.json", "example.toml", "public/desalination_scheduling/*.parquet",
   "public/desalination_scheduling/flowsheet.svg",
+]
+"flex_pse_examples.examples.flex_connect_solar" = [
+  "config.json", "example.toml", "sites.json", "data/solar_cf.parquet", "data/lmp.parquet",
+  "public/flex_connect_solar/*.parquet", "public/flex_connect_solar/flowsheet.svg",
 ]
 "flex_pse_examples.examples.pump_scheduling" = [
   "config.json", "example.toml", "public/pump_scheduling/*.parquet",

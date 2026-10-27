@@ -105,6 +105,9 @@ ALLOWED_IMPORTS = frozenset(
     {
         "marimo", "numpy", "pandas", "matplotlib", "mpl_toolkits", "scipy",
         "duckdb",
+        # Pure Python; marimo's WebAssembly runtime installs it from PyPI on
+        # import. It is what mo.ui.altair_chart needs for hover and click.
+        "altair",
         "__future__", "abc", "base64", "collections", "dataclasses", "datetime",
         "decimal", "enum", "functools", "io", "itertools", "json", "math",
         "operator", "random", "re", "statistics", "string", "textwrap", "typing",
